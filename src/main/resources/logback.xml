@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[%thread] %date [%-5level] %logger |- %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/logs/swagger.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>swagger.%d{yyyy-MM-dd}.log</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>[%thread] %date [%-5level] - %logger : %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="org.springframework" level="WARN" />
+	<logger name="org.apache.cxf.services" level="WARN" />
+	<logger name="org.apache" level="WARN" />
+	<logger name="org.hibernate" level="WARN" />
+	<logger name="org.mybatis" level="WARN" />
+	<logger name="freemarker" level="WARN" />
+	<logger name="com.opensymphony" level="WARN" />
+	<logger name="org.quartz" level="WARN" />
+	<logger name="org.terracotta" level="WARN" />
+	<logger name="javax.servlet" level="WARN" />
+	<logger name="org.hamcrest" level="WARN" />
+	<logger name="org.dozer" level="ERROR" />
+	<logger name="net.sf.ehcache" level="WARN" />
+	<logger name="com.mchange" level="WARN" />
+
+	<!-- root -->
+	<root level="DEBUG">
+		<appender-ref ref="console" />
+		<appender-ref ref="rollingFile" />
+	</root>
+</configuration>
